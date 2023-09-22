@@ -1,0 +1,1 @@
+内存会被分成很多簇，每个簇是一个节点(struct pg_data_t)，一个节点又构成很多管理区（ZONE_DMA、ZONE_NORMAL、ZONE_HIGHMEM）(struct zone_struct),管理区又分成了很多页面帧(struct page)。
