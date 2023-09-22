@@ -212,7 +212,7 @@ static struct page * rmqueue(zone_t *zone, unsigned int order)
 		if (curr != head) {
 			unsigned int index;
 
-			page = list_entry(curr, struct page, list);
+			page = list_entry(curr, struct page, list);	// 通过page恢复宿主结构
 			if (BAD_RANGE(zone,page))
 				BUG();
 			list_del(curr);

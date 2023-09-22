@@ -160,7 +160,7 @@ static int notesize(struct memelfnote *en)
 static char *storenote(struct memelfnote *men, char *bufp)
 {
 	struct elf_note en;
-
+// 使用do while(0)，可以避免一些使用if出问题的情况
 #define DUMP_WRITE(addr,nr) do { memcpy(bufp,addr,nr); bufp += nr; } while(0)
 
 	en.n_namesz = strlen(men->name);

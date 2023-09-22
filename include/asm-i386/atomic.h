@@ -52,6 +52,9 @@ typedef struct { volatile int counter; } atomic_t;
  */
 static __inline__ void atomic_add(int i, atomic_t *v)
 {
+	// “=m”表示相应的目标操作数（指令部中的%0）是一个内存单元 v->counter
+	// “直接操作数”（i表示immediate）
+	// LOCK表示在执行addl指令时要把系统的总线锁住
 	__asm__ __volatile__(
 		LOCK "addl %1,%0"
 		:"=m" (v->counter)

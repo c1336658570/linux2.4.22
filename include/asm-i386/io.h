@@ -309,9 +309,11 @@ static inline void flush_write_buffers(void)
 #endif /* __KERNEL__ */
 
 #ifdef SLOW_IO_BY_JUMPING
-#define __SLOW_DOWN_IO "\njmp 1f\n1:\tjmp 1f\n1:"
+// 1f表示往前（f表示forward）找到第一个标号为1的那一行，1b就表示往后找
+// 这个指令的意思是使CPU空做两条跳转指令和消耗掉一些时间
+#define __SLOW_DOWN_IO "\njmp 1f\n1:\tjmp 1f\n1:"		
 #else
-#define __SLOW_DOWN_IO "\noutb %%al,$0x80"
+#define __SLOW_DOWN_IO "\noutb %%al,$0x80"		// 向0x80端口写入al
 #endif
 
 #ifdef REALLY_SLOW_IO

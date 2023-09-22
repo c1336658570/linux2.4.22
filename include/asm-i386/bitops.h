@@ -35,6 +35,7 @@
  */
 static __inline__ void set_bit(int nr, volatile void * addr)
 {
+	// btsl将一个32位操作数中的某一位设置成1。参数nr表示该位的位置。
 	__asm__ __volatile__( LOCK_PREFIX
 		"btsl %1,%0"
 		:"=m" (ADDR)

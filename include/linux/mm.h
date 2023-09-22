@@ -151,7 +151,7 @@ struct vm_operations_struct {
  *
  * TODO: make this structure smaller, it could be as small as 32 bytes.
  */
-typedef struct page {	//记录页面状态
+typedef struct page {	// 记录页面状态
 	struct list_head list;		/* ->mapping has some page lists. */
 	struct address_space *mapping;	/* The inode (or ...) we belong to. */
 	unsigned long index;		/* Our offset within mapping. */

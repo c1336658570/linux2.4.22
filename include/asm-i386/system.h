@@ -12,6 +12,8 @@
 struct task_struct;	/* one of the stranger aspects of C forward declarations.. */
 extern void FASTCALL(__switch_to(struct task_struct *prev, struct task_struct *next));
 
+// 内核在调度一个进程运行，进行切换之际，在有些CPU上需要调用prepare_to_switch()作些准备，
+// 而在另一些CPU上就不需要，所以要把它定义为空操作
 #define prepare_to_switch()	do { } while(0)
 #define switch_to(prev,next,last) do {					\
 	asm volatile("pushl %%esi\n\t"					\
